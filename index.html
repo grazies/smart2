@@ -1,256 +1,357 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Smart by smartpm</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
+    <title>Smart by grazies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Smart</h1>
-        <p></p>
+    <section class="page-header">
+      <h1 class="project-name">Smart</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/grazies/smart2" class="btn">View on GitHub</a>
+      <a href="https://github.com/grazies/smart2/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/grazies/smart2/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/smartpm/smart">View the Project on GitHub <small>smartpm/smart</small></a></p>
+    <section class="main-content">
+      <ol>
+<li>
+<p>Overview</p>
 
+<p>Smart2 is a package manager that based on smart. Smart2 support all the 
+funtions of smart. In addition, smart2 has some new features.</p>
 
-        <ul>
-          <li><a href="https://github.com/smartpm/smart/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/smartpm/smart/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/smartpm/smart">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="smart-package-manager" class="anchor" href="#smart-package-manager"><span class="octicon octicon-link"></span></a>Smart Package Manager</h1>
+<hr>
 
 <h2>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+<a id="new-features" class="anchor" href="#new-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>New Features</h2>
 
-<p>The <strong>Smart Package Manager</strong> project has the ambitious objective of
-creating smart and portable algorithms for solving adequately the
-problem of managing software upgrading and installation. This tool
-works in all major distributions, and will bring notable advantages
-over native tools currently in use (APT, APT-RPM, YUM, URPMI, etc).</p>
+<ul>
+<li>A new interface named "tgui" can show you a gui on your character terminal.</li>
+<li>Supports customizing your target rootfs on host development machine.</li>
+</ul>
 
-<p>Notice that this project is not a magical bridge between every
-distribution in the planet. Instead, this is software offering better
-package management for these distributions when working with their
-native packages. Using multiple packaging systems at the same time (like
-rpm and dpkg) is possible but would require packages from those systems
-to follow the same packaging guidelines. As this is not the case at the
-moment, mixing package systems is not recommended.</p>
+<p>Note
+  More informations about smart, please reference to doc/ or <a href="http://labix.org/smart/howto">http://labix.org/smart/howto</a>.</p>
+</li>
+<li>
+<p>How to get smart2</p>
 
-<p>From <em>The Free On-line Dictionary of Computing</em>:</p>
+<p>Smart2 now is managed on Github. You can get smart2 from there.
+<a href="https://github.com/ubinux/smart2.git">https://github.com/ubinux/smart2.git</a></p>
+</li>
+<li>
+<p>Installation</p>
 
-<pre><code>smart
+<p>3.1 Dependencies</p>
 
-    1. &lt;programming&gt; Said of a program that does the {Right Thing}
-    in a wide variety of complicated circumstances. (...)
+<p>1) The dependencies are same as smart
+     Smart2 is based on smart, so please make sure the prerequisites for smart have been installed.
+     Please refrence to <a href="http://labix.org/smart/howto">http://labix.org/smart/howto</a> to obtain details.</p>
+
+<p>2) Dependencies for smart2 new features.
+     - python-newt:  the snack module depended by "tgui" graphic interface.</p>
+
+<p>Note
+    In some cases (e.g. Cross-Platform), maybe you can not use the above command
+    which belongs to host directly. You should build a special one for your target-platform,
+    and make sure it's available in your toolchain for Cross-Platform.</p>
+
+<pre><code>E.g, for Yocto user, you should install the toolchain firstly
 </code></pre>
 
-<h2>
-<a name="project-status" class="anchor" href="#project-status"><span class="octicon octicon-link"></span></a>Project Status</h2>
+<p>3.2 Installation</p>
 
-<p>The development of Smart Package Manager started on May 4th, 2004, and
-version 1.0 was released on Aug 14th, 2008, after extended beta testing.</p>
+<p>Cd into smart2 directory and execute the following commands as root:</p>
 
-<h2>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+<hr>
 
-<h3>
-<a name="modular" class="anchor" href="#modular"><span class="octicon octicon-link"></span></a>Modular</h3>
+<p># python setup.py build
+   # python setup.py install</p>
 
-<p>Smart has been developed with modularity and flexibility in mind. It's
-completely backend-based, and package-manager-agnostic. Support is
-currently implemented for <strong>RPM</strong>, <strong>DPKG</strong>, and <strong>Slackware</strong>
-package management systems, and porting it to new systems should be
-very easy.</p>
+<hr>
 
-<h3>
-<a name="smart-transactions" class="anchor" href="#smart-transactions"><span class="octicon octicon-link"></span></a>Smart Transactions</h3>
+<p>Or you can use the supplied Makefile:</p>
 
-<p>That's one of the most interesting aspects of Smart Package Manager,
-and the one who has motivated calling it smart. Computing
-transactions respecting the relations involved in the package
-management world may become an unpleasant task when thousands of
-packages and relations are being considered, or even when just
-a few complex relations turn the most obvious choice into the
-unwanted one.</p>
+<hr>
 
-<p>While other applications try to find a possible solution to satisfy
-the relations involved in some user-requested operation, and
-sometimes even fail to do so [1], Smart goes beyond it. In the
-kernel of Smart Package Manager lives an algorithm that will
-not only find a solution, if one is available, but will find
-the best solution. This is done by quickly weighting every
-possible solution with a pluggable policy, which redefines
-the term "best" depending on the operation goal (install,
-remove, upgrade, etc).</p>
+<p># make
+   # make install</p>
 
-<p>This behavior has many interesting consequences. In upgrades,
-for instance, while precedence is given to newer versions,
-intermediate versions may get selected if they bring a
-better global result for the system. Packages may even be
-reinstalled, if different packages with the same name-version
-pair have different relations, and the one not installed
-is considered a better option.</p>
+<hr>
 
-<p>Another important goal achieved with the transaction algorithm
-is that, even though it is able to check and fix relations in
-the whole system, it will work even when there are broken
-relations in installed packages. Only relations related to
-the operation being made are checked for correctness.</p>
+<p>Note
+    After install you have to change the interpreter from "#!/usr/bin/python" to 
+    "#!/usr/bin/env python" in your smart2 command.
+    -----------------------------------------------------------------
+     $ whereis smart
+       smart: /opt/bin/smart
+     $ cat /opt/bin/smart
+       #!/usr/bin/env python
+       ......
+    -----------------------------------------------------------------</p>
 
-<p>.. [1] Check "Case Studies" for real cases where the algorithm
-       works better than what is implemented in other applications.</p>
+<p>3.3 Global Setting</p>
 
-<h3>
-<a name="multiple-interfaces" class="anchor" href="#multiple-interfaces"><span class="octicon octicon-link"></span></a>Multiple Interfaces</h3>
+<p>1) In Cross-Platform case, make sure the required commands can be invoked preferentially.
+     For example, you can do it by the following command for Yocto-User
+     -----------------------------------------------------------------------
+      # source TOOLCHAIN/environment-setup-i586-poky-linux
+     -----------------------------------------------------------------------</p>
 
-<p>Smart has multiple native and completely integrated interfaces:</p>
+<p>2) Make sure the following environment variable point to correct path.
+     -----------------------------------------------------------------------
+      # export RPM_USRLIBRPM=/usr/lib/rpm
+      # export RPM_ETCRPM=/etc/rpm
+      # export RPM_LOCALEDIR=/usr/share/locale
+     -----------------------------------------------------------------------</p>
 
-<ul>
-<li><p>Command line interface, with several useful subcommands: update,
-install, reinstall, upgrade, remove, check, fix, download, search,
-and more.</p></li>
-<li><p>Shell interface, with command and argument completion, making it
-easy to perform multiple operations quickly using a local or
-remote terminal.</p></li>
-<li><p>Graphic interface, offering the friendliness of visual
-user interaction.</p></li>
-<li><p>Command line interface with graphic feedback, allowing one to
-integrate the power of command line with graphic environments.</p></li>
-</ul><p>Besides these interfaces, ksmarttray is also included in the Smart
-package. It notifies users about available updates using a KDE
-tray icon.</p>
+<pre><code>Note
+  In Cross-Platform case, maybe you should customize these variable.
+  E.g. for Yocto user, you should set them as following.
+  -------------------------------------------------------------------
+   # export RPM_USRLIBRPM=${OECORE_NATIVE_SYSROOT}/usr/lib/rpm
+   # export RPM_ETCRPM=${SDKTARGETSYSROOT}/etc/rpm
+   # export RPM_LOCALEDIR=${OECORE_NATIVE_SYSROOT}/usr/share/locale
+  -------------------------------------------------------------------
+</code></pre>
+</li>
+<li>
+<p>How to manage packages</p>
 
-<h3>
-<a name="channels" class="anchor" href="#channels"><span class="octicon octicon-link"></span></a>Channels</h3>
+<p>4.1 Prepare</p>
 
-<p>Channels are the way Smart becomes aware about external repositories
-of information. Many different channel types are supported, depending
-on the backend and kind of information desired:</p>
+<p>You should construct the environment before doing install/remove/search operations. </p>
 
-<ul>
-<li>APT-DEB Repository</li>
-<li>APT-RPM Repository</li>
-<li>DPKG Installed Packages</li>
-<li>Mirror Information</li>
-<li>Red Carpet Channel</li>
-<li>RPM Directory</li>
-<li>RPM Header List</li>
-<li>RPM MetaData (YUM)</li>
-<li>RPM Installed Packages</li>
-<li>Slackware Repository</li>
-<li>Slackware Installed Packages</li>
-<li>URPMI Repository</li>
-</ul><h3>
-<a name="priority-handling" class="anchor" href="#priority-handling"><span class="octicon octicon-link"></span></a>Priority Handling</h3>
+<p>Smart2 provides a script named enviroment-smart.sh to do it automaticly.
+  It can help you to complete the following jobs:
+    - Build pseudo environment.
+    - Configure DB settings for packages sources (e.g. rpm, deb).
+    - Configure smart2 settings for packages sources (e.g. rpm, deb).
+    - Add channels for each packages source.</p>
 
-<p>Priorities are a powerful way to easily handle integration
-of multiple channels and explicit user setups regarding
-preferred package versions.</p>
+<p>You can configure your smart2 environment as the following: </p>
 
-<p>Basically, packages with higher priorities are considered a
-better option to be installed in the system, even when package
-versions state otherwise. Priorities may be individually
-assigned to all packages in given channels, to all packages
-with given names, and to packages with given names inside
-given channels.</p>
+<hr>
 
-<p>With custom priority setups, it becomes possible to avoid
-unwanted upgrades, force downgrades, select packages in given
-channels as preferential, and other kinds of interesting setups.</p>
+<p>$ . enviroment-smart.sh ROOTFS_DIR PACKAGES_DIR</p>
 
-<h3>
-<a name="autobalancing-mirror-system" class="anchor" href="#autobalancing-mirror-system"><span class="octicon octicon-link"></span></a>Autobalancing Mirror System</h3>
+<hr>
 
-<p>Smart offers a very flexible mirror support. Mirrors are URLs
-that supposedly provide the same contents as are available in
-other URLs, named origins. There is no internal restriction on
-the kind of information which is mirrored. Once an origin URL
-is provided, and one or more mirror URLs are provided, these
-mirrors will be considered for any file which is going to be
-fetched from an URL starting with the origin URL.</p>
+<p>There must be two parameters for enviroment-smart.sh:</p>
 
-<p>Mirror precedence is dynamically computed based on the history
-of downloads of all mirrors available for a given origin URL
-(including the origin site itself). The fastest mirrors and
-with less errors are chosen. When errors occur, the next
-mirror in the queue is tried.</p>
+<p>1) ROOTFS_DIR: The rootfs directory where you want to install packages.</p>
 
-<p>For instance, if a mirror <code>http://mirror.url/path/</code> is provided
-for the origin <code>ftp://origin.url/other/path/</code>, and a file in
-<code>ftp://origin.url/other/path/subpath/somefile</code> is going to be
-fetched, the mirror will be considered for being used, and the
-URL <code>http://mirror.url/path/subpath/somefile</code> will be used if
-the mirror is chosen. Notice that strings are compared and
-replaced without any pre-processing, so that it's possible to
-use different schemes (ftp, http, etc) in mirror entries, and
-even URLs ending in prefixes of directory entries.</p>
+<pre><code> Note
+   * ROOTFS_DIR must be absolute path.
+   * If it doesn't exist, it will be created.
+</code></pre>
 
-<h3>
-<a name="downloading-mechanism" class="anchor" href="#downloading-mechanism"><span class="octicon octicon-link"></span></a>Downloading Mechanism</h3>
+<p>2) PACKAGES_DIR: The packages sources directory. There can be multiple packages sources
+                   in this directory.</p>
 
-<p>Smart has a fast parallel downloading mechanism, allowing multiple
-connections to be used for one or more sites. The mechanism
-supports:</p>
+<pre><code> Note
+   Smart2 manage packages by repodata, make sure there is repodata in every sources
+   directory under PACKAGES_DIR.
+</code></pre>
 
-<ul>
-<li>Resuming</li>
-<li>Timestamp checking</li>
-<li>Parallel uncompression</li>
-<li>Autodetection of FTP user limit</li>
-<li>Cached file validation</li>
-</ul><p>and more.</p>
+<p>For example:
+    If you build x86 by Yocto, there will be three packages sources for x86.
+    And there is a repodata in each packages sources:
+    -------------------------------------------------------------------
+     # tree /home/test/x86_rpm/ | grep -v ".rpm"
+       /home/test/x86_rpm/
+       |-- all
+       |   |-- repodata
+       |   |   |-- filelists.xml.gz
+       |   |   |-- other.xml.gz
+       |   |   |-- primary.xml.gz
+       |   |   |-- repomd.xml
+       |-- i586
+       |   |-- repodata
+       |   |   |-- filelists.xml.gz
+       |   |   |-- other.xml.gz
+       |   |   |-- primary.xml.gz
+       |   |   |-- repomd.xml
+       |-- qemux86
+       |   |-- repodata
+       |   |   |-- filelists.xml.gz
+       |   |   |-- other.xml.gz
+       |   |   |-- primary.xml.gz
+       |   |   |-- repomd.xml
+    -------------------------------------------------------------------</p>
 
-<p>At the moment, the following schemes are nativelly supported:</p>
+<pre><code>You can configure your smart2 environment for x86 by the following:
+-------------------------------------------------------------------
+ $ . enviroment-smart.sh /home/test/x86_rootfs /home/test/x86_rpm
+-------------------------------------------------------------------
+</code></pre>
 
-<ul>
-<li>file</li>
-<li>ftp</li>
-<li>http</li>
-<li>https</li>
-<li>scp</li>
-</ul><p>Additionally, the following schemes are supported when pycurl is
-available:</p>
+<p>4.2 Create rootfs for Target-Platform</p>
 
-<ul>
-<li>ftps</li>
-<li>telnet</li>
-<li>dict</li>
-<li>ldap</li>
-</ul><h3>
-<a name="removable-media-support" class="anchor" href="#removable-media-support"><span class="octicon octicon-link"></span></a>Removable Media Support</h3>
+<p>Smart2 supports a new interface named "tgui" which can 
+  help you to customize your rootfs under character terminal in your development machine.</p>
 
-<p>Smart Package Manager implements builtin support for removable media
-(CDROMs, DVDs, etc) in most of the supported channel types. The
-following features are currently implemented:</p>
+<p>You will enter the tgui insterface with the option "--interface=tgui".
+  For example:</p>
 
-<ul>
-<li>Mountpoint autodetection</li>
-<li>Support for multiple simultaneous media drives</li>
-<li>Medias may be inserted in any order</li>
-<li>Installed system is guaranteed to maintain correct relations
-between media changes</li>
-<li>Remote removable media support using any of the supported schemes
-(ftp, http, scp, etc)</li>
-</ul>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/smartpm">smartpm</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+<hr>
+
+<p>$ smart --rootfs-dir=$ROOTFS_DIR  --interface=tgui</p>
+
+<hr>
+
+<p>Note
+    --rootfs-dir: rootfs directory that specified by enviroment-smart.sh.</p>
+
+<p>After execute the above command, you can enter the interface of tgui:</p>
+
+<p>1) Select install type
+     Smart2 supports three kinds of install type:
+     - install all
+       By default, all pacakges will be selected.
+     - Busybox base
+       By default, only busybox packages will be selected.
+     - customize
+       By default, no packages will be selected.</p>
+
+<p>2) Smart2 can help you filter GPLv3.
+     If you select "install all" or "customize" in above, smart2 will ask you whether 
+     you want to install packages which license is GPLv3.
+     - No  : GPLv3 packages will not be selected and not display in the next step.
+     - Yes : GPLv3 packages can be selected as same as the other packages.</p>
+
+<p>3) customize packages</p>
+
+<pre><code>------------------------------------- Select package -------------------------------------
+|                                                                                        |
+| [I] zip                                                                                |
+| [*] zabbix                                                                             |
+| [I] xz                                                                                 |
+| [*] xwud                                                                               |
+| [*] xwininfo                                                                           |
+| [*] xwd                                                                                |
+| [*] xvinfo                                                                             |
+| [*] xterm                                                                              |
+| [*] xstdcmap                                                                           |
+| [*] xsetroot                                                                           |
+| [*] xsetmode                                                                           |
+| [*] xset                                                                               |
+| [*] xserver-xorg-xwayland                                                              |
+| [*] xserver-xorg-xvfb                                                                  |
+| [I] xserver-xorg-utils                                                                 |
+| [I] xserver-xorg-module-libwfb                                                         |
+| [I] xserver-xorg-module-libint10                                                       |
+| [*] xserver-xorg-module-exa                                                            |
+| [*] xserver-xorg-extension-glx                                                         |
+| [*] xserver-xorg                                                                       |
+| [I] xserver-xf86-config                                                                |
+| [*] xrestop                                                                            |
+| [*] xrefresh                                                                           |
+| -------------------------------------------------------------------------------------- |
+| All Package [2609]    Installed Packages [1264] Selected Packages [2609]               |
+| -------------------------------------------------------------------------------------- |
+| SPACE/ENTER:select/unselect  R:seaRch N:Next  B:Back  I:Info  X:eXit                   |
+------------------------------------------------------------------------------------------
+
+Note
+  -  [] Means the package has not been selected and installed. If you want to install it, you can 
+        select it by pressing enter.
+  - [*] Means the package has been selcted and will be installed. If you don't want to install it,
+        you can cancel by pressing enter.
+  - [I] Means the package has been installed in your rootfs. You can't select/unselect it in tgui.
+        If you want to uninstall it.Please use the following command after exiting tgui.
+        $ smart --rootfs-dir=/home/test/x86-rootfs remove pkgname
+
+  - Next: If you press "N" or "n" in the interface, it will go to the next step.
+</code></pre>
+
+<p>4) customize packages type
+     You can select the package type that you want to install into rootfs.</p>
+
+<pre><code>---------------------------- customize special type packages ----------------------------  
+|                                                                                        |
+| locale [ ]                                                                             |
+| dev [ ]                                                                                |
+| doc [ ]                                                                                |
+| dbg [ ]                                                                                |
+| staticdev [ ]                                                                          |
+| ptest [ ]                                                                              |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
+| -------------------------------------------------------------------------------------- |
+| SPACE/ENTER:select/unselect  N:Next  B:Back  I:Info  X:eXit                            |
+------------------------------------------------------------------------------------------
+
+Note
+  You can get details about the package type by pressing "I" or "i".
+</code></pre>
+
+<p>5) Confirm selection</p>
+
+<pre><code> After you confirming your customization, the installation will begin.
+</code></pre>
+
+<p>6) Confirm installation</p>
+
+<pre><code> To make sure the files in rootfs have correct uid and gid, notice that:
+  * When rootfs is finished, please compress it into a tarball in the
+    current terminal to keep the pseudo environment.
+  * When unpack rootfs, please use sudo command with "--numeric-owner" option.
+
+    For example:
+    -------------------------------------------------------------------
+     $ . enviroment-smart.sh /home/test/x86_rootfs /home/test/x86_rpm
+     $ smart --rootfs-dir=/home/test/x86_rootfs  --interface=tgui
+     $ cd /home/test/
+     $ tar cvf - x86-rootfs | (cd $DEST_DIR ;sudo tar xvf - --numeric-owner)
+    -------------------------------------------------------------------
+</code></pre>
+
+<p>4.3 Smart2 Commands</p>
+
+<p>Besides "tgui", you also can manage packages by command line with the option 
+  "--rootfs-dir".
+  For example:</p>
+
+<hr>
+
+<p>$ smart --rootfs-dir=/home/test/x86-rootfs install pkgname
+   $ smart --rootfs-dir=/home/test/x86-rootfs remove pkgname
+   $ smart --rootfs-dir=/home/test/x86-rootfs query '<em>kgnam</em>'</p>
+
+<hr>
+
+<p>More commands please reference to doc/ or <a href="http://labix.org/smart/howto">http://labix.org/smart/howto</a>.</p>
+</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/grazies/smart2">Smart</a> is maintained by <a href="https://github.com/grazies">grazies</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+
+    </section>
+
+  
   </body>
 </html>
